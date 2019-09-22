@@ -1,0 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
+body {
+  font-family: 'Montserrat';
+}
+
+.skin-blue .main-header .navbar .nav>li>a .dropdown-menu{
+    color: #333 !important;
+}
+
+i.fa.fa-upload {
+  color: #333 !important;
+}
