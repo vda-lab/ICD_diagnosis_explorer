@@ -14,31 +14,7 @@ shinyUI(
         span(class = "logo-lg", "Diagnosis explorer"), 
         img(src = "https://image.flaticon.com/icons/svg/1021/1021799.svg")),
       left_menu = tagList(
-        tags$head(tags$style(HTML('.dropdown-toggle { color: #333 !important; }'))),
-        # Node size
-        dropdownBlock(
-          id = "mydropdown",
-          title = "Node size",
-          icon =  "angle-double-down",
-          badgeStatus = NULL,
-          sliderInput(
-            inputId = "node_size",
-            label = "Node Size Network",
-            min = 1, max = 100, value = 25
-          )
-        ),
-        # Bar-chart filter
-        dropdownBlock(
-          id = "mydropdown",
-          title = "Bar-chart filter",
-          icon =  "sliders-h",
-          badgeStatus = NULL,
-          sliderInput(
-            inputId = "obs",
-            label = "Percentage of ICD Codes common in identical position",
-            min = 1, max = 100, value = 10, post  = " %"
-          )
-        )
+        tags$head(tags$style(HTML('.dropdown-toggle { color: #333 !important; }')))
       )
     ),
     dashboardSidebar(
@@ -54,7 +30,7 @@ shinyUI(
       useShinyjs(),
       
       shinyDashboardThemes(
-        theme = "blue_gradient"
+        theme = "onenote"
       ),
       
       tags$head(
@@ -134,6 +110,21 @@ shinyUI(
             ####################################
             # Second row: Network plot and Beeswarm 
             ###################################
+            
+            fluidRow(
+              column(4,             
+                dropdownButton(
+                  circle = FALSE,
+                  label = "Change node size",
+                  badgeStatus = NULL,
+                  sliderInput(
+                    inputId = "node_size",
+                    label = "Node Size Network",
+                    min = 1, max = 100, value = 25
+                  )
+                )
+              )
+            ),
             fluidRow(column(12, visNetworkOutput("network_id", height = "640px") )),
             fluidRow(column(12, 
                             actionBttn(input = "select", 
@@ -163,6 +154,19 @@ shinyUI(
                         Colored bars represent ICD codes which appear with a proportion of 10% in the same position of the ranking.
                         This value can be increased or decreased using the slider “Bar-chart filter”)</p>")
                      )
+              )
+            ),
+            fluidRow(
+              column(4, 
+                dropdownButton(
+                  circle = FALSE,
+                  label = "ICD codes displayed",
+                  sliderInput(
+                    inputId = "obs",
+                    label = "Percentage of ICD Codes common in identical position",
+                    min = 1, max = 100, value = 10, post  = " %"
+                  )
+                )
               )
             ),
             ###################################
@@ -207,27 +211,27 @@ shinyUI(
                  column(12,ggvisOutput("dist_codes4") )
                )
               ) 
-            ),
-            ####################################
-            # Decision tree
-            ###################################
-            fluidRow(
-              column(12,
-                     boxPlus(
-                       id = "decision_tree_box",
-                       title = "Decision tree", 
-                       closable = FALSE, 
-                       width = NULL,
-                       status = "info",
-                       solidHeader = FALSE, 
-                       collapsible = TRUE,
-                       HTML("<p>The decision tree compares the diagnosis profiles between the selected groups. 
-                            It is displayed after two selections of patients.</p>")
-                     )
-              )
-            ),
-            ###################################  
-            fluidRow(column(12, visNetworkOutput("tree") ))
+            )
+            # ####################################
+            # # Decision tree
+            # ###################################
+            # fluidRow(
+            #   column(12,
+            #          boxPlus(
+            #            id = "decision_tree_box",
+            #            title = "Decision tree", 
+            #            closable = FALSE, 
+            #            width = NULL,
+            #            status = "info",
+            #            solidHeader = FALSE, 
+            #            collapsible = TRUE,
+            #            HTML("<p>The decision tree compares the diagnosis profiles between the selected groups. 
+            #                 It is displayed after two selections of patients.</p>")
+            #          )
+            #   )
+            # ),
+            # ###################################  
+            # fluidRow(column(12, visNetworkOutput("tree") ))
         ), # End dahsboard
         tabItem("about", 
            p("To Be Continued")

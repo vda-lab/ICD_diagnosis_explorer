@@ -108,7 +108,7 @@ shinyServer(
       visInteraction(navigationButtons = TRUE,
                      dragNodes = TRUE, 
                      dragView = TRUE,
-                     zoomView = TRUE,
+                     zoomView = FALSE,
                      multiselect = TRUE) %>%
       visLegend(ncol = 2, width = 0.15) %>%
       visGroups(groupname = dyn$re_label_porp$group_label[1] ,  color = "#8dd3c7" ) %>%
