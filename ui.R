@@ -22,7 +22,6 @@ shinyUI(
         menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
         menuItem("About ", icon = icon("question-circle"), tabName = "about")
       )
-      #fluidRow(column(12, numericInput("obs", "Observations:", 10, min = 1, max = 100)))
       
     ),
     dashboardBody(
@@ -212,26 +211,6 @@ shinyUI(
                )
               ) 
             )
-            # ####################################
-            # # Decision tree
-            # ###################################
-            # fluidRow(
-            #   column(12,
-            #          boxPlus(
-            #            id = "decision_tree_box",
-            #            title = "Decision tree", 
-            #            closable = FALSE, 
-            #            width = NULL,
-            #            status = "info",
-            #            solidHeader = FALSE, 
-            #            collapsible = TRUE,
-            #            HTML("<p>The decision tree compares the diagnosis profiles between the selected groups. 
-            #                 It is displayed after two selections of patients.</p>")
-            #          )
-            #   )
-            # ),
-            # ###################################  
-            # fluidRow(column(12, visNetworkOutput("tree") ))
         ), # End dahsboard
         tabItem("about", 
            p("To Be Continued")

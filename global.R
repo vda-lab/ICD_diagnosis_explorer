@@ -17,10 +17,6 @@ require(shinydashboardPlus)
 require(shinyWidgets)
 require(shinyjs)
 
-#source("collapse.R")
-# Working directory (TO REMOVE)
-# setwd("/Users/daniel/SynologyDrive/13.PhD/accumulate/code/15_diagnosis/explorer")
-
 ####################################
 # Read individual files
 ###################################
